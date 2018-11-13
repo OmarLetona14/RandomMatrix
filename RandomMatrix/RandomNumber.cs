@@ -17,10 +17,10 @@ namespace RandomMatrix
 
             for (int y = 0; y< 4;y++) {
                 for (int x= 0; x<4; x++) {
-                    randomMatrix[x, y] = generateRandom();
-                    sumTotal += randomMatrix[x, y];
-                    sumRow(y, randomMatrix[x, y]);
-                    sumColumn(x, randomMatrix[x, y]);
+                    randomMatrix[y,x] = generateRandom();
+                    sumTotal += randomMatrix[y,x];
+                    sumRow(y, randomMatrix[y,x]);
+                    sumColumn(x, randomMatrix[y,x]);
 
                 }                   
             }
@@ -30,6 +30,7 @@ namespace RandomMatrix
             printSumColumn();
             printBigger();
             sumDiagonal(randomMatrix);
+            calculateDiagonal(randomMatrix);
             Console.WriteLine("La suma total de los numeros de la matriz es: "+sumTotal);
             Console.WriteLine("El promedio de la matriz es: " + (sumTotal/16));
             calcBiggSmaller(randomMatrix);
@@ -65,6 +66,19 @@ namespace RandomMatrix
             Console.WriteLine("El numero menor de la matriz se encuentra en la fila: " + xMe +
                            " y la columna: " + yMe);
               
+        }
+        public void calculateDiagonal(int[,] matrix)
+        {
+            int sum = 0, iterator = 3;
+            for (int y=0; y<4;y++) {
+                for (int x = iterator; x >= iterator; x--)
+                {
+                    sum += matrix[x, y];
+                }
+                iterator--;
+            }
+
+            Console.WriteLine("El valor de la diagonal 2 es de: "+sum);
         }
        
 
@@ -115,7 +129,7 @@ namespace RandomMatrix
             {
                 sumadiagonal += matriz[i, i];
             }
-            Console.WriteLine("La suma de la diagonal es: " + sumadiagonal);
+            Console.WriteLine("El valor de la digonal 1 es: " + sumadiagonal);
         }
 
         public void sumRow(int y, int value) {
