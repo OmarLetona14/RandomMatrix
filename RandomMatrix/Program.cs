@@ -8,8 +8,14 @@ namespace RandomMatrix
 {
     class Program
     {
+        static RandomNumber random = new RandomNumber();
+
         static void Main(string[] args)
         {
+            random.generateMatrix();
+            Console.ReadLine();
         }
+
+
     }
 }
